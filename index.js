@@ -10,7 +10,7 @@ const googleapi = require("./config/googlesheets.config");
 const session = require("express-session");
 const morgan = require("morgan");
 const helmet = require("helmet");
-
+console.log(process.env.API_KEY)
 app.use(helmet());
 app.use(morgan("combined"));
 
