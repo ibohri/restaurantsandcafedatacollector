@@ -8,11 +8,17 @@ const fs = require("fs");
 const routes = require("./routes/index.route");
 const googleapi = require("./config/googlesheets.config");
 const session = require("express-session");
+const morgan = require("morgan");
+const helmet = require("helmet");
+
+app.use(helmet());
+app.use(morgan("combined"));
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: 's3Cur3',
-    name: 'sessionId'
+    name: 'sessionId',
+    cookie: { secure: true }
 }));
 
 // Error middleware
@@ -32,8 +38,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", isAuthenticated, (req, res) => {
     res.render("fileupload");
 });
- 
-app.get("/login", (req, res) => { 
+
+app.get("/login", (req, res) => {
     res.render("login", { authUrl: googleapi.getAuthUrl() });
 });
 
