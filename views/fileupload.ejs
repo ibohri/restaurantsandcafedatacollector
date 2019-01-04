@@ -1,0 +1,46 @@
+<%- include _layout.ejs %>
+
+<div class="container m-auto">
+	<h3><span class="bd-content-title">CSV File</span></h3>
+	<form id="form" method="post" action="api/addLocationData" onsubmit="return validateForm()" enctype="multipart/form-data">
+		<div class="input-group mb-3">
+			<div class="custom-file">
+				<input type="file" class="custom-file-input form-control" accept=".csv" name="file" id="fileUpload">
+				<label class="custom-file-label" for="fileUpload" aria-describedby="fileUpload">Choose file</label>
+			 </div>
+			 <div class="invalid-feedback file-upload-invalid-feedback">
+				Please select file.
+			</div>
+		</div>
+		<button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+<script type="text/javascript">
+	function validateForm(){
+		makeFileUploadControlValid();
+		var file = document.forms["form"]["file"].value;
+		if(!file){
+			$("#fileUpload").addClass("is-invalid");
+			$(".file-upload-invalid-feedback").show();
+			return false;
+		}
+		showSpinner();
+		return true;
+	}
+
+	function makeFileUploadControlValid(){
+		$("#fileUpload").removeClass("is-invalid");
+		$(".file-upload-invalid-feedback").hide();
+	}
+
+	$(document).ready(function(){
+		$("#fileUpload").on("change", function(){
+			var fileName = this.files[0].name;
+			if(fileName){
+				$(this).next('.custom-file-label').html(fileName);
+				makeFileUploadControlValid();
+			}
+		})
+	})
+</script>

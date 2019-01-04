@@ -1,0 +1,11 @@
+﻿<%- include _layout.ejs %>
+
+<% if(uploaded === "true"){ %>
+	<div>
+		<h3>Location data added successfully.</h3>
+	</div>
+ <% } else{ %>  
+   <h3>Unable to add data. Please try again.</h3>
+   <div class="error-message">Error - <%= message %></div>
+<% } %>
+<a class="btn btn-primary back-to-home-btn" href="/">Back To Home</a> 
