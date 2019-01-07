@@ -1,12 +1,11 @@
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-const credentials = require("../credentials.json").web;
 
 const oauth2Client =
   new OAuth2(
-    credentials.client_id,
-    credentials.client_secret,
-    credentials.redirect_uris[0]
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.REDIRECT_URI
   );
 
 
