@@ -2,7 +2,31 @@
 
 <% if(uploaded === "true"){ %>
 <div>
-	<h3>Location data added successfully.</h3>
+	<h3>Status</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Zip Code</th>
+				<th scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for(var i=0; i < zipCodeStatus.length; i++) { %>
+			<tr>
+				<td>
+					<%= i %>
+				</td>
+				<td>
+					<%= zipCodeStatus[i].zip_code %>
+				</td>
+				<td>
+					<%= zipCodeStatus[i].status %>
+				</td>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
 </div>
 <% } else{ %>
 <h3>Unable to add data. Please try again.</h3>

@@ -7,7 +7,7 @@ module.exports.getLocations = async zipCode => {
             return [];
         }
         const response = await googleMapsClient
-            .places({ query: `${zipCode}`, type: "cafe" })
+            .places({ query: `${zipCode}`, type: "cafe,restaurant" })
             .asPromise();
         return response.json.results;
     }
@@ -16,4 +16,3 @@ module.exports.getLocations = async zipCode => {
         throw e;
     }
 };
- 
