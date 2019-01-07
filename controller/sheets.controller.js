@@ -1,6 +1,6 @@
 const { google } = require("googleapis");
 const googlesheets = require("../config/googlesheets.config");
-const spreadSheetId = '1GiTmp-MldoL-qzCZBVYVORndCeasesSqfzR7p-2B98w';
+const spreadSheetId = '1lyMCKf7uIX0l3SdiVmSArO4_nCak_rxyhvBbifry-u4';
 
 async function addLocationsData(values) {
     const oauth2Client = googlesheets.getAuthClient();
